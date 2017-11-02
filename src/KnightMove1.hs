@@ -1,5 +1,5 @@
-module KnightMove (
-  in3, KnightPos, routesIn3
+module KnightMove1 (
+    in3, KnightPos, canReachIn3 
 ) where
 
 import Control.Monad
@@ -15,15 +15,13 @@ moveKnight (c,r) = do
     return (c',r')  
 
 -- Possible Positions in 3 moves
-in3 :: KnightPos -> [[KnightPos]]
+in3 :: KnightPos -> [KnightPos]
 in3 start = do  
     first <- moveKnight start  
     second <- moveKnight first  
     third <- moveKnight second  
-    return [start, first, second, third]
+    return third 
 
---canReachIn3 :: KnightPos -> KnightPos -> Bool  
---canReachIn3 start end = end `elem` in3 start 
+canReachIn3 :: KnightPos -> KnightPos -> Bool  
+canReachIn3 start end = end `elem` in3 start 
 
-routesIn3 :: KnightPos -> KnightPos -> [[KnightPos]]
-routesIn3 start end = filter (\r -> end == last r) $ in3 start 

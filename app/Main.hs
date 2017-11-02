@@ -3,9 +3,9 @@ module Main where
 
 import Lib
 import FileLines
-import KnightMove
+import KnightMove1
 
 
 main :: IO ()
 main = do
-  putStrLn $ show $ routesIn3 (6,2) (6,1)
+  putStrLn $ show $ canReachIn3 (6,2) (6,1)
