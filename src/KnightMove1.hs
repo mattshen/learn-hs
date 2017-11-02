@@ -1,8 +1,9 @@
 module KnightMove1 (
-    in3, KnightPos, canReachIn3 
+    in3, KnightPos, canReachIn3, inMany, canReachIn
 ) where
 
 import Control.Monad
+import Data.List
 
 type KnightPos = (Int,Int)
 
@@ -20,8 +21,13 @@ in3 start = do
     first <- moveKnight start  
     second <- moveKnight first  
     third <- moveKnight second  
-    return third 
+    return third
+
+inMany :: Int -> KnightPos -> [KnightPos]  
+inMany x start = return start >>= foldr (<=<) return (replicate x moveKnight)  
 
 canReachIn3 :: KnightPos -> KnightPos -> Bool  
 canReachIn3 start end = end `elem` in3 start 
 
+canReachIn :: Int -> KnightPos -> KnightPos -> Bool  
+canReachIn x start end = end `elem` inMany x start  
