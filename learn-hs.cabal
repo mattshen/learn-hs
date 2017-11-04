@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib, FileLines, KnightMove1, SolveRPN
+  exposed-modules:     Lib, FileLines, KnightMove1, SolveRPN, Zippers
   build-depends:       base >= 4.7 && < 5, random, bytestring, mtl
   default-language:    Haskell2010
 
